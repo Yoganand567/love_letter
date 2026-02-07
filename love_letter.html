@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<title>నిశ్శబ్దంగా చెప్పిన ప్రేమ</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:"Segoe UI", system-ui, sans-serif;
+    color:#2b2b2b;
+    background: linear-gradient(270deg,#fdfbfb,#eef1ff,#fff3f7,#f3f6ff);
+    background-size: 600% 600%;
+    animation: bgMove 18s ease infinite;
+}
+
+/* intro screen */
+
+.intro{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#fff3f7,#eef1ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    animation:fadeInUp 0.8s ease;
+}
+
+.intro-box{
+    background:#ffffff;
+    padding:40px 45px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,0.12);
+    animation:introFloat 4s ease-in-out infinite;
+}
+
+.intro-box h2{
+    margin:0;
+    font-size:28px;
+    color:#8a3b5c;
+}
+
+.intro-box p{
+    margin:12px 0 25px;
+    font-size:16px;
+}
+
+.intro-box button{
+    border:none;
+    padding:12px 28px;
+    border-radius:25px;
+    font-size:15px;
+    cursor:pointer;
+    background:linear-gradient(90deg,#c96b8a,#7b6fe8);
+    color:white;
+}
+
+.intro-box button:hover{
+    opacity:0.9;
+}
+
+/* main card */
+
+.card{
+    max-width:900px;
+    margin:60px auto;
+    background:#ffffff;
+    padding:45px 60px;
+    border-radius:18px;
+    box-shadow:0 22px 50px rgba(0,0,0,0.09);
+    animation:
+        fadeInUp 0.9s ease-out both,
+        floatCard 6s ease-in-out infinite;
+}
+
+/* title */
+
+h1{
+    font-size:32px;
+    margin-bottom:30px;
+    text-align:center;
+    letter-spacing:1px;
+    color:#34345e;
+    position:relative;
+}
+
+h1::after{
+    content:"";
+    display:block;
+    width:90px;
+    height:3px;
+    background:linear-gradient(90deg,#c96b8a,#7b6fe8);
+    margin:12px auto 0;
+    border-radius:5px;
+    animation: linePulse 3s ease-in-out infinite;
+}
+
+/* text */
+
+p{
+    font-size:17.2px;
+    line-height:2;
+    margin:18px 0;
+    text-align:justify;
+}
+
+/* first paragraph highlight */
+
+.card p:first-of-type{
+    font-size:18px;
+    font-weight:500;
+}
+
+.card p:first-of-type::first-letter{
+    font-size:34px;
+    font-weight:700;
+    color:#8a3b5c;
+}
+
+/* proposal block */
+
+.proposal{
+    margin-top:45px;
+    padding:32px 34px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#fff3f7,#ffffff);
+    border-left:7px solid #c96b8a;
+    animation: softAppear 1.4s ease both;
+}
+
+/* hover glow */
+
+.card:hover{
+    box-shadow:0 28px 70px rgba(201,107,138,0.25);
+    transform:translateY(-6px) scale(1.01);
+    transition:0.4s ease;
+}
+
+/* animations */
+
+@keyframes bgMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+@keyframes introFloat{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+    100%{transform:translateY(0)}
+}
+
+@keyframes floatCard{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+    100%{transform:translateY(0)}
+}
+
+@keyframes linePulse{
+    0%{width:70px;opacity:0.6}
+    50%{width:110px;opacity:1}
+    100%{width:70px;opacity:0.6}
+}
+
+@keyframes softAppear{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeInUp{
+    from{
+        opacity:0;
+        transform: translateY(18px);
+    }
+    to{
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
+/* mobile */
+
+@media(max-width:600px){
+    .card{
+        padding:30px 22px;
+        margin:20px;
+    }
+    h1{
+        font-size:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- intro view -->
+<div class="intro" id="intro">
+    <div class="intro-box">
+        <h2>For you…</h2>
+        <p>ఒక చిన్న మనసుతో రాసిన లేఖ</p>
+        <button onclick="openLetter()">Open Letter</button>
+    </div>
+</div>
+
+<!-- letter -->
+
+<div class="card" id="letter" style="display:none;">
+
+<h1>నిశ్శబ్దంగా చెప్పిన ప్రేమ</h1>
+
+<p>
+ఈ మాటలు చెప్పడానికి నాకు ధైర్యం ఎక్కువగా లేదు…
+కానీ దాచుకుని ఉండడం కన్నా, నిశ్శబ్దంగా చెప్పడం మంచిదనిపించింది.
+</p>
+
+<p>
+నువ్వు నా జీవితంలోకి వచ్చాక
+ప్రపంచం మారిపోయిందని కాదు…
+కానీ నా లోపల నేను కొంచెం సాఫ్ట్‌గా మారాను.
+</p>
+
+<p>
+ఎవరూ చూడని చిన్న క్షణాలే
+నాకు గుర్తుండిపోతున్నాయి…
+నీ మాటల్లో ఉన్న నిశ్శబ్దం,
+నీ నవ్వులో ఉన్న నిజం —
+అవి నన్ను నెమ్మదిగా నీ వైపు తీసుకెళ్లాయి.
+</p>
+
+<p>
+నువ్వు నాకు ఇంత దగ్గరవుతావని
+నేను ముందుగా ఊహించలేదు.
+అందుకే ఈ ఫీలింగ్ కూడా
+ప్లాన్ చేసి వచ్చినది కాదు.
+</p>
+
+<p>
+నీకు నీ దారి ఉంది.
+నీ ప్రయాణం ఉంది.
+నీ ప్రాధాన్యతలు నీకు క్లియర్‌గా ఉన్నాయి.
+</p>
+
+<p>
+ఆ దారిలో నేను అడ్డుగా నిలబడాలని
+నాకు ఎప్పుడూ లేదు.
+</p>
+
+<p>
+నిన్ను ప్రేమిస్తున్నాను అంటే
+నీ జీవితంలో చోటు కావాలని అడగడం కాదు.
+నీ నిర్ణయాలను మార్చాలని కూడా కాదు.
+</p>
+
+<p>
+నువ్వు నన్ను ఎంచుకోకపోయినా,
+నిన్ను అర్థం చేసుకునే మనిషిగా మాత్రం
+నేను తగ్గిపోను.
+</p>
+
+<p>
+నిన్ను ఇష్టపడటం అంటే
+నువ్వు హ్యాపీగా ఉండడాన్ని
+నిజంగా కోరుకోవడం.
+</p>
+
+<p>
+నువ్వు ఇంకెవరి దగ్గరైనా
+సేఫ్‌గా, హ్యాపీగా ఉంటే
+అది కూడా నాకు ఓకే.
+</p>
+
+<p>
+కానీ ఒక నిజం మాత్రం ఉంది —
+నిన్ను నేను చాలా సింపుల్‌గా కాదు…
+చాలా డీప్‌గా ఇష్టపడుతున్నాను.
+</p>
+
+<p>
+నా లైఫ్‌లో నేను ఎంత సక్సెస్ అయినా,
+నువ్వు లేకపోతే
+ఆ సక్సెస్ నాకు పూర్తి అనిపించదు.
+</p>
+
+<p>
+ఒక చిన్న విషయం కూడా నిజంగా చెప్పాలి…
+</p>
+
+<p>
+ఆ రోజు
+“అందుకు కాల్ చేశావా?” అని నువ్వు అడిగినప్పుడు,
+కాస్త కోపంగా మాట్లాడినప్పుడు,
+నాపై చిరాకు చూపించినట్టు అనిపించినప్పుడు —
+నేను లోపల మాత్రం చాలా సైలెంట్‌గా హర్ట్ అయ్యాను.
+</p>
+
+<p>
+కానీ నిన్ను తప్పుపట్టడానికి
+ఆ ఫీలింగ్‌ని నేను ఎప్పుడూ వాడుకోలేదు.
+నీ పరిస్థితులు నాకు తెలియవు కదా.
+</p>
+
+<p>
+అయినా కూడా…
+చుట్టూ ఎంతమంది ఉన్నా,
+ఆ టైమ్‌లో నా మనసు మాత్రం
+నిన్నే వెతికింది.
+</p>
+
+<p>
+నిన్ను దగ్గర నుంచి
+“సారీ” కూడా నేను ఎక్స్‌పెక్ట్ చేయడం లేదు.
+మళ్ళీ అలాంటి పరిస్థితి వచ్చినా,
+మళ్ళీ నువ్వు అలానే మాట్లాడినా —
+నేను దాన్ని హ్యాండిల్ చేయగలను.
+</p>
+
+<p>
+ఎందుకంటే నాకు నిన్ను మార్చాలనే కాదు…
+అర్థం చేసుకోవాలనే ఉంది.
+</p>
+
+<p>
+ఇంకో నిజం కూడా చెప్తాను…
+నిన్ను ప్రేమించే వాళ్లు
+చాలామంది రావచ్చు.
+కానీ నా లాగా
+ఎటువంటి షరతులు లేకుండా,
+ఎటువంటి హక్కులు అడగకుండా
+నిన్ను ప్రేమించే మనిషి మాత్రం
+మళ్ళీ రావడం కష్టం.
+</p>
+
+<p>
+ఇంకా చెప్పాలని అనుకున్నవి చాలా ఉన్నాయి…
+చెప్పాలనుకున్న మాటలు కూడా రావడం లేదు…
+కానీ కొన్ని మాటలు మాత్రం చెప్పగలుగుతున్నాను.
+</p>
+
+<div class="proposal">
+<h2>నా ఫీలింగ్‌ని వేరే విధంగా చెప్పాలంటే…</h2>
+
+<p>
+నిన్ను నా జీవితంలోకి తీసుకురావాలని నేను అడగడం లేదు.  
+నీ రోజులను, నీ లక్ష్యాలను మార్చమని కూడా అడగడం లేదు.
+</p>
+
+<p>
+కేవలం ఒక చిన్న అవకాశం మాత్రమే…
+</p>
+
+<p>
+నువ్వు అనుమతిస్తే,  
+నీ జీవితంలో నువ్వు ఉన్న విధంగానే  
+నిన్ను అర్థం చేసుకునే ఒక మనిషిగా  
+నీ పక్కన నడవాలని ఉంది.
+</p>
+
+<p>
+నీకు బలం కావాలంటే నేను అవ్వాలి అనుకోవడం లేదు,  
+నీ సైలెన్స్‌ని గౌరవించే వ్యక్తిగా ఉండాలనుకుంటున్నాను.
+</p>
+
+<p>
+నువ్వు నన్ను ఎంచుకున్నా,  
+ఎంచుకోకపోయినా —  
+నువ్వు నా జీవితంలో వచ్చిన ఒక నిజమైన భావనగా  
+నేను నిన్ను ఎప్పటికీ గౌరవిస్తాను.
+</p>
+
+<p>
+ఇది ప్రపోజ్ చేయడమే కాదు…  
+నీ జీవితాన్ని గౌరవిస్తూ చెప్పిన నా నిజమైన ఫీలింగ్.
+</p>
+</div>
+
+</div>
+
+</div>
+
+<script>
+function openLetter(){
+    document.getElementById("intro").style.display="none";
+    document.getElementById("letter").style.display="block";
+}
+</script>
+
+</body>
+</html>

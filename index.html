@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Animation</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+}
+
+/* OPEN BOX */
+
+.box{
+    width:120px;
+    height:120px;
+    background:white;
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    font-weight:bold;
+    color:#ff4f81;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    position:absolute;
+
+    animation:
+    openBox 2s forwards,
+    hideBox 0.5s forwards;
+
+    animation-delay:0s,2s;
+}
+
+/* BOX OPENING */
+
+@keyframes openBox{
+
+    0%{
+        transform:scale(0.2);
+        opacity:0;
+    }
+
+    50%{
+        transform:scale(1);
+        opacity:1;
+    }
+
+    100%{
+        width:100%;
+        height:100%;
+        border-radius:0;
+        background:white;
+    }
+
+}
+
+/* BOX HIDING */
+
+@keyframes hideBox{
+
+    from{
+        opacity:1;
+    }
+
+    to{
+        opacity:0;
+        visibility:hidden;
+    }
+
+}
+
+/* WELCOME TEXT */
+
+.welcome{
+    position:absolute;
+    font-size:55px;
+    font-weight:bold;
+    color:#ff4f81;
+    opacity:0;
+
+    animation:showText 2s forwards;
+    animation-delay:2.2s;
+}
+
+@keyframes showText{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* IMAGE SECTION */
+
+.image-box{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:white;
+
+    opacity:0;
+
+    animation:showImage 2s forwards;
+    animation-delay:5s;
+}
+
+.image-box img{
+    width:80%;
+    max-width:700px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* IMAGE ANIMATION */
+
+@keyframes showImage{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- OPEN BOX -->
+
+<div class="box">
+    OPEN
+</div>
+
+<!-- WELCOME TEXT -->
+
+<div class="welcome">
+    Welcome To Your Page
+</div>
+
+<!-- IMAGE -->
+
+<div class="image-box">
+
+<img src="C:\Users\P  YOGANAND\Downloads\MyWebsite\image.png" alt="Image">
+
+</div>
+
+</body>
+</html>
